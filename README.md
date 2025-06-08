@@ -17,8 +17,7 @@ my_ai_conpanion/
 ├── .gitignore
 ├── .env
 ├── README.md
-└── templates/
-    └── index.html
+└── index.html
 ```
 
 - **main.py**: Flask application handling user input, building conversation history, calling Gemini via `data_processing.py`, and logging to the database.
@@ -27,7 +26,7 @@ my_ai_conpanion/
 - **Dockerfile**: Builds a Docker image with all dependencies and runs the Flask app via Gunicorn.
 - **.env**: Example environment file. Copy to `.env` and fill in your credentials.
 - **README.md**: This file.
-- **templates/index.html**: Front-end template showing the full multi-turn chat.
+- **index.html**: Front-end template showing the full multi-turn chat.
 
 ## Prerequisites
 
