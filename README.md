@@ -24,7 +24,7 @@ my_ai_conpanion/
 - **data_processing.py**: Formats the full conversation history (plus few-shot examples) and calls the Gemini model.
 - **requirements.txt**: All Python dependencies.
 - **Dockerfile**: Builds a Docker image with all dependencies and runs the Flask app via Gunicorn.
-- **.env**: Example environment file. Copy to `.env` and fill in your credentials.
+- **.env**: Environment file.
 - **README.md**: This file.
 - **index.html**: Front-end template showing the full multi-turn chat.
 
