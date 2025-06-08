@@ -38,9 +38,7 @@ my_ai_conpanion/
 
 ## Setup
 
-1. **Fill in your `.env` file**:
-
-   Edit `.env` and set the following variables:
+1. **Create an .env file and set the following variables**:
 
    ```
    CLOUDSQL_USER=your_db_user
