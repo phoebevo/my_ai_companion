@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Companion</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 20px 0 10px;
+    }
+
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 10px;
+    }
+
+    .message {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    .user {
+      background-color: #e0f7fa;
+    }
+
+    .ai {
+      background-color: #f1f8e9;
+    }
+
+    .chat-input {
+      flex-shrink: 0;
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+    }
+
+    textarea {
+      width: 100%;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 1rem;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Need someone to talk to? This AI’s here for you.</h1>
+    <p>Hi there, I’m Thomas. Is there anything you’d like to share with me today? Don’t be shy — I’m here for you. Let’s see if I can be the friend you need.</p>
+  </header>
+
+  <!-- Messages area: appears above the chat input -->
+  <div id="messages">
+    {% if conversation_history %}
+      {% for line in conversation_history.strip().split('\n') %}
+        {% if line.startswith("User:") %}
+          <div class="message user">{{ line[5:].strip() }}</div>
+        {% elif line.startswith("AI:") %}
+          <div class="message ai">{{ line[3:].strip() }}</div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Input and restart buttons at the bottom -->
+  <div class="chat-input">
+    <form method="POST" style="margin-bottom: 8px;">
+      <textarea
+        name="user_input"
+        rows="3"
+        placeholder="e.g. I feel a bit anxious today..."
+        required
+      ></textarea><br />
+      <button type="submit" name="send">Send</button>
+    </form>
+
+    <form method="POST" style="margin-bottom: 12px;">
+      <button type="submit" name="reset">Restart Conversation</button>
+    </form>
+  </div>
+
+  <!-- Auto-scroll script -->
+  <script>
+    const messagesDiv = document.getElementById("messages");
+    if (messagesDiv) {
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+  </script>
+</body>
+</html>
